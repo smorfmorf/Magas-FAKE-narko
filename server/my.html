@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+
+    <button onclick="fetchAuth()">Авторизация</button>
+    <button onclick="fetchData()">click </button>
+
+    <script>
+      const a = 'mazaka'
+
+      function fetchAuth() {
+        debugger
+        fetch('http://localhost:4444/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            "userName": "mazaka3",
+            "password": "1234"
+          }),
+          credentials: 'include',
+
+        })
+          .then((response) => response.json())
+          .then((data) => console.log(data))
+          .catch((error) => console.error('Ошибка логина:', error));
+
+      }
+
+
+
+      function fetchData() {
+        fetch('http://localhost:4444/api/', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+
+        })
+          .then((response) => response.json())
+          .then((data) => console.log('Success:', data))
+          .catch((error) => console.error('Ошибка:', error));
+
+      }
+
+
+
+
+
+    </script>
+
+    <script src="my.js"></script>
+  </body>
+
+</html>
